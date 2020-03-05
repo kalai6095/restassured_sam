@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MainTest {
-    private String apiHost;
+    private String server = "httpbin.org";
 
     @Before
     public void getConfig() {
@@ -17,13 +17,13 @@ public class MainTest {
 
     @Test
     public void testResponseCode() {
-        Response res = RestAssured.get("http://httpbin.org/get?isGood=true");
+        Response res = RestAssured.get("http://" + server + "/get?isGood=true");
         Assert.assertEquals(res.getStatusCode(), 200);
     }
 
     @Test
     public void testResponseCode02() {
-        Response res = RestAssured.get("http://httpbin.org/get?isGood=true");
+        Response res = RestAssured.get("http://" + server + "/get?isGood=true");
         System.out.println(res.asString());
         Assert.assertEquals(true, true);
         //Assert.assertEquals(res.getStatusCode(), 200);
